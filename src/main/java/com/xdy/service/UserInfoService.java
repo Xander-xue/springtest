@@ -16,4 +16,6 @@ public interface UserInfoService  {
     void updateUser(UserInfo userInfo);
 
     void delUser(Integer[] ids);
+
+    void testTransational();
 }

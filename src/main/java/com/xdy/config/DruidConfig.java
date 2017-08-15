@@ -28,7 +28,7 @@ public class DruidConfig {
     private String username;
     @Value("${spring.datasource.password:#{null}}")
     private String password;
-    @Value("${spring.datasource.driverClassName:#{null}}")
+    @Value("${spring.datasource.driver-class-name:#{null}}")
     private String driverClassName;
     @Value("${spring.datasource.initialSize:#{null}}")
     private Integer initialSize;
@@ -58,6 +58,10 @@ public class DruidConfig {
     private String filters;
     @Value("{spring.datasource.connectionProperties:#{null}}")
     private String connectionProperties;
+    @Value("{spring.datasource.druidLoginName:#{null}}")
+    private String druidLoginName;
+    @Value("{spring.datasource.druidPassword:#{null}}")
+    private String druidPassword;
 
     @Bean     //声明其为Bean实例
     @Primary  //在同样的DataSource中，首先使用被标注的DataSource
@@ -106,7 +110,6 @@ public class DruidConfig {
         if (maxPoolPreparedStatementPerConnectionSize != null) {
             datasource.setMaxPoolPreparedStatementPerConnectionSize(maxPoolPreparedStatementPerConnectionSize);
         }
-
         if (connectionProperties != null) {
             datasource.setConnectionProperties(connectionProperties);
         }
@@ -124,30 +127,30 @@ public class DruidConfig {
         ServletRegistrationBean servletRegistrationBean = new ServletRegistrationBean();
         servletRegistrationBean.setServlet(new StatViewServlet());
         servletRegistrationBean.addUrlMappings("/druid/*");
-        servletRegistrationBean.addInitParameter("deny","127.0.0.1");
+        servletRegistrationBean.addInitParameter("deny","127.0.0.1");//druid的监控界面黑白名单配置
         servletRegistrationBean.addInitParameter("allow","172.16.8.140");
+        servletRegistrationBean.addInitParameter("loginUsername", this.druidLoginName);//druid登录名
+        servletRegistrationBean.addInitParameter("loginPassword", this.druidPassword);//登录密码
+        servletRegistrationBean.addInitParameter("resetEnable", "false"); // 禁用HTML页面上的“Reset All”功能
         return servletRegistrationBean;
     }
-
+    //druid监控配置
     @Bean
     public StatFilter statFilter() {
         StatFilter statFilter = new StatFilter();
         statFilter.setLogSlowSql(true);
         statFilter.setMergeSql(true);
         statFilter.setSlowSqlMillis(1000);
-
         return statFilter;
     }
 
     @Bean
     public WallFilter wallFilter() {
         WallFilter wallFilter = new WallFilter();
-
         //允许执行多条SQL
         WallConfig config = new WallConfig();
         config.setMultiStatementAllow(true);
         wallFilter.setConfig(config);
-
         return wallFilter;
     }
 

@@ -20,8 +20,12 @@ spring:
     testWhileIdle: true
     testOnBorrow: false
     testOnReturn: false
+    removeAbandoned: true
+    removeAbandonedTimeout: 1800
     poolPreparedStatements: true
     maxOpenPreparedStatements: 20
+    druidLoginName: admin # 登录druid的账号
+    druidPassword: admin # 登录druid的密码
 
 swagger:
     enable: true
