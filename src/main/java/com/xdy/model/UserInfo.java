@@ -3,8 +3,6 @@ package com.xdy.model;
 import io.swagger.annotations.ApiModelProperty;
 
 import javax.persistence.*;
-import javax.validation.constraints.NotNull;
-import java.io.Serializable;
 
 /**
  * User: xuedaiyao
@@ -13,7 +11,7 @@ import java.io.Serializable;
  * Description:
  */
 @Table(name = "user_info")
-public class UserInfo implements Serializable{
+public class UserInfo {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
