@@ -13,7 +13,7 @@ import org.springframework.web.filter.CorsFilter;
 /**
  * Configuration of web application.
  *
- * @author hookszhang on 18/06/2017.
+ * @author xuedaiyao on 18/06/2017.
  */
 @Configuration
 public class WebConfigurer {

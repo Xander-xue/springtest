@@ -10,8 +10,7 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter
 /**
  * Copyright (C), 2011-2017 温州贷
  * FileName: WebAppConfigurer.java
- * Author: shijikun
- * Email: shijikun@wzdai.com
+ * Author: xuedaiyao
  * Date: 2017/6/7 10:01
  * Description:
  * History:
@@ -19,17 +18,20 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter
 @Configuration
 public class WebAppConfigurer extends WebMvcConfigurerAdapter {
     @Autowired
-    RequestInterceptor requestInterceptor;
+    private  RequestInterceptor requestInterceptor;
     @Autowired
-    AllRequestInterceptor allRequestInterceptor;
+    private AllRequestInterceptor allRequestInterceptor;
 
     @Override
     public void addInterceptors(InterceptorRegistry registry) {
+        // 多个拦截器组成一个拦截器链
+        // addPathPatterns 用于添加拦截规则  添加需要权限拦截的接口
+        // excludePathPatterns 用户排除拦截  需要排序的比如用户登录或者对所有人开放的接口
         registry.addInterceptor(allRequestInterceptor).addPathPatterns("/**");
         registry.addInterceptor(requestInterceptor)
-                .addPathPatterns("/**")
+                .addPathPatterns("")
 
-                .excludePathPatterns("/usr/login_quick")
+                .excludePathPatterns("")
         ;
         super.addInterceptors(registry);
     }
