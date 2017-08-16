@@ -1,5 +1,6 @@
 package com.xdy.controller;
 
+import com.github.pagehelper.PageInfo;
 import com.xdy.model.UserInfo;
 import com.xdy.service.UserInfoService;
 import io.swagger.annotations.ApiOperation;
@@ -21,21 +22,27 @@ public class HelloController {
     @Autowired
     private UserInfoService userInfoService;
 
+    @GetMapping()
+    @ApiOperation(value = "用户列表", notes = "用户列表")
+    public PageInfo<UserInfo> list() {
+        return new PageInfo<UserInfo>(userInfoService.list());
+    }
+
     @PostMapping()
-    @ApiOperation(value = "添加用户@xdy",notes = "添加用户")
-    public void save(@RequestBody  UserInfo userInfo){
-         userInfoService.save(userInfo);
+    @ApiOperation(value = "添加用户@xdy", notes = "添加用户")
+    public void save(@RequestBody UserInfo userInfo) {
+        userInfoService.save(userInfo);
     }
 
     @PutMapping()
-    @ApiOperation(value = "修改用户@xdy",notes = "修改用户")
-    public void updateUser(@RequestBody UserInfo userInfo){
+    @ApiOperation(value = "修改用户@xdy", notes = "修改用户")
+    public void updateUser(@RequestBody UserInfo userInfo) {
         userInfoService.updateUser(userInfo);
     }
 
     @DeleteMapping()
-    @ApiOperation(value = "批量删除用户",notes = "批量删除用户")
-    public void delUser( @ApiParam(value = "用户ID数组", required = true)@RequestBody Integer[] ids){//如果使用这种注解来传递数组[7,8]  如果不使用这个注解，传递7,8 即可，不用方括号
+    @ApiOperation(value = "批量删除用户", notes = "批量删除用户")
+    public void delUser(@ApiParam(value = "用户ID数组", required = true) @RequestBody Integer[] ids) {//如果使用这种注解来传递数组[7,8]  如果不使用这个注解，传递7,8 即可，不用方括号
         userInfoService.delUser(ids);
     }
 }

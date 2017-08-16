@@ -2,6 +2,8 @@ package com.xdy.service;
 
 import com.xdy.model.UserInfo;
 
+import java.util.List;
+
 /**
  * User: xuedaiyao
  * Date: 2017/8/14
@@ -9,7 +11,7 @@ import com.xdy.model.UserInfo;
  * Description:
  */
 
-public interface UserInfoService  {
+public interface UserInfoService {
 
     void save(UserInfo userInfo);
 
@@ -18,4 +20,6 @@ public interface UserInfoService  {
     void delUser(Integer[] ids);
 
     void testTransational();
+
+    List<UserInfo> list();
 }

@@ -1,5 +1,6 @@
 package com.xdy.Inteceptor;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
 
@@ -17,8 +18,7 @@ import javax.servlet.http.HttpServletResponse;
  */
 @Component
 public class RequestInterceptor extends HandlerInterceptorAdapter {
-   /* @Autowired
-    private RedisService redisService;*/
+
 
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {

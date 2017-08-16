@@ -35,8 +35,8 @@ import java.util.regex.Matcher;
         })
 public class SqlPrintInterceptor implements Interceptor {
 
-    private static Log logger = LogFactory.getLog(SqlPrintInterceptor.class);
     private static final DateFormat DATE_FORMAT = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+    private static Log logger = LogFactory.getLog(SqlPrintInterceptor.class);
 
     @Override
     public Object intercept(Invocation invocation) throws Throwable {
@@ -54,9 +54,9 @@ public class SqlPrintInterceptor implements Interceptor {
 
         long end = System.currentTimeMillis();
         long timing = end - start;
-        if(logger.isInfoEnabled()){
-            logger.info("执行sql耗时:" + timing + " ms" + " - id:" + statementId + " - Sql:" );
-            logger.info("   "+sql);
+        if (logger.isInfoEnabled()) {
+            logger.info("执行sql耗时:" + timing + " ms" + " - id:" + statementId + " - Sql:");
+            logger.info("   " + sql);
         }
         return result;
     }

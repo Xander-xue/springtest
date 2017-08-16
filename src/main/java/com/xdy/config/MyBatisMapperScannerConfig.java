@@ -15,7 +15,7 @@ import java.util.Properties;
 @AutoConfigureAfter(MyBatisConfig.class)
 public class MyBatisMapperScannerConfig {
     @Bean
-    public MapperScannerConfigurer mapperScannerConfigurer() {
+    static MapperScannerConfigurer mapperScannerConfigurer() {
         MapperScannerConfigurer mapperScannerConfigurer = new MapperScannerConfigurer();
         mapperScannerConfigurer.setSqlSessionFactoryBeanName("sqlSessionFactory");
         mapperScannerConfigurer.setBasePackage("com.xdy.mapper");

@@ -18,12 +18,16 @@ public class UserInfo {
     private Integer id;
 
     @Column(name = "user_name")
-    @ApiModelProperty(value = "用户名",required = true)
+    @ApiModelProperty(value = "用户名", required = true)
     private String userName;
 
     @Column(name = "password")
-    @ApiModelProperty(value = "密码",required = true)
+    @ApiModelProperty(value = "密码", required = true)
     private String password;
+
+    @Column(name = "phone_number")
+    @ApiModelProperty(value = "手机号码", required = true)
+    private String phoneNumber;
 
 
     public Integer getId() {
@@ -48,5 +52,13 @@ public class UserInfo {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public String getPhoneNumber() {
+        return phoneNumber;
+    }
+
+    public void setPhoneNumber(String phoneNumber) {
+        this.phoneNumber = phoneNumber;
     }
 }

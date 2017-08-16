@@ -10,7 +10,7 @@
         <result column="password" jdbcType="VARCHAR" property="password"/>
     </resultMap>
 
-    <update id="deleteByIds" >
+    <update id="deleteByIds">
         DELETE FROM
         user_info
         WHERE

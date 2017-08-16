@@ -1,10 +1,10 @@
 package com.xdy.Inteceptor;
 
-/*import org.apache.commons.lang3.StringUtils;
+import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;*/
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
 
@@ -16,11 +16,10 @@ import java.util.UUID;
 
 @Component
 public class AllRequestInterceptor extends HandlerInterceptorAdapter {
- /*   @Autowired
-    RedisUtil redisUtil;
+   /* @Autowired
+    RedisUtil redisUtil;*/
     Logger logger = LoggerFactory.getLogger(getClass());
-    @Value("${cookie.domain}")
-    private String cookieDomain;
+
 
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
@@ -43,12 +42,12 @@ public class AllRequestInterceptor extends HandlerInterceptorAdapter {
             response.setHeader("Authorization", token);
             Cookie cookie = new Cookie("uu_id", token);
             cookie.setHttpOnly(true);
-            cookie.setDomain(cookieDomain);
+            cookie.setDomain("");
             cookie.setPath("/");
             cookie.setMaxAge(expireTime);
             response.addCookie(cookie);
-            redisUtil.put("customer:" + token, new Date(), (long) expireTime);
+//            redisUtil.put("customer:" + token, new Date(), (long) expireTime);
         }
         return true;
-    }*/
+    }
 }

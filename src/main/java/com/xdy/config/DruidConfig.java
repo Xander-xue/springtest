@@ -127,13 +127,14 @@ public class DruidConfig {
         ServletRegistrationBean servletRegistrationBean = new ServletRegistrationBean();
         servletRegistrationBean.setServlet(new StatViewServlet());
         servletRegistrationBean.addUrlMappings("/druid/*");
-        servletRegistrationBean.addInitParameter("deny","127.0.0.1");//druid的监控界面黑白名单配置
-        servletRegistrationBean.addInitParameter("allow","172.16.8.140");
+        servletRegistrationBean.addInitParameter("deny", "127.0.0.1");//druid的监控界面黑白名单配置
+        servletRegistrationBean.addInitParameter("allow", "172.16.8.140");
         servletRegistrationBean.addInitParameter("loginUsername", this.druidLoginName);//druid登录名
         servletRegistrationBean.addInitParameter("loginPassword", this.druidPassword);//登录密码
         servletRegistrationBean.addInitParameter("resetEnable", "false"); // 禁用HTML页面上的“Reset All”功能
         return servletRegistrationBean;
     }
+
     //druid监控配置
     @Bean
     public StatFilter statFilter() {
