@@ -17,6 +17,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 public class UserInfoServiceImplTest {
     @Autowired
     private UserInfoService userInfoService;
+
     @Before
     public void setUp() throws Exception {
 

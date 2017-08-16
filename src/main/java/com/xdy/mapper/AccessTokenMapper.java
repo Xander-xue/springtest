@@ -10,6 +10,6 @@ import com.xdy.util.MyMapper;
  * Description:
  */
 
-public interface AccessTokenMapper extends MyMapper<AccessToken>  {
+public interface AccessTokenMapper extends MyMapper<AccessToken> {
 }
 

@@ -18,10 +18,10 @@ import org.springframework.validation.beanvalidation.MethodValidationPostProcess
 @EnableAutoConfiguration
 public class FactoryConfig {
 
-    final static Logger logger= LoggerFactory.getLogger(FactoryConfig.class);
+    final static Logger logger = LoggerFactory.getLogger(FactoryConfig.class);
 
     @Bean
-    public MethodValidationPostProcessor methodValidationPostProcessor(){
+    public MethodValidationPostProcessor methodValidationPostProcessor() {
         return new MethodValidationPostProcessor();
     }
 

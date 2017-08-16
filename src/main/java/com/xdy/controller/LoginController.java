@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RestController;
  * Description:
  */
 @RestController
-public interface LoginController  {
+public interface LoginController {
 
 }
 

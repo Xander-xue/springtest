@@ -28,7 +28,7 @@ public class AccessToken {
     public AccessToken() {
     }
 
-    public AccessToken(String accessToken,  Boolean expire) {
+    public AccessToken(String accessToken, Boolean expire) {
         this.accessToken = accessToken;
         this.expire = expire;
     }

@@ -13,8 +13,8 @@ import java.util.UUID;
 
 @Component
 public class AllRequestInterceptor extends HandlerInterceptorAdapter {
-   /* @Autowired
-    RedisUtil redisUtil;*/
+    /* @Autowired
+     RedisUtil redisUtil;*/
     Logger logger = LoggerFactory.getLogger(getClass());
 
 

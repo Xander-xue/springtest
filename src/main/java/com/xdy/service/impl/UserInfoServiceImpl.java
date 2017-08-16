@@ -39,21 +39,22 @@ public class UserInfoServiceImpl implements UserInfoService {
         if (!isUserLogin(userToken)) {
             throw new CustomerException(401, "请登录");
         }
-        return  this.getUserByToken(userToken,0);
+        return this.getUserByToken(userToken, 0);
     }
 
     /**
-     *  根据用户token查询是否存在token未过期的记录
+     * 根据用户token查询是否存在token未过期的记录
+     *
      * @param userToken
      * @return
      */
     private boolean isUserLogin(String userToken) {
         Example example = new Example(AccessToken.class);
         Example.Criteria criteria = example.createCriteria();
-        criteria.andEqualTo("accessToken",userToken);
-        criteria.andEqualTo("expire",0);//0-未过期 1- 过期
+        criteria.andEqualTo("accessToken", userToken);
+        criteria.andEqualTo("expire", 0);//0-未过期 1- 过期
         List<AccessToken> accessToken = accessTokenMapper.selectByExample(example);
-        if (CollectionUtil.isNotEmpty(accessToken)){
+        if (CollectionUtil.isNotEmpty(accessToken)) {
             return true;
         }
         return false;
@@ -62,8 +63,8 @@ public class UserInfoServiceImpl implements UserInfoService {
     private UserInfo getUserByToken(String userToken, int expire) {
         Example example = new Example(AccessToken.class);
         Example.Criteria criteria = example.createCriteria();
-        criteria.andEqualTo("accessToken",userToken);
-        criteria.andEqualTo("expire",0);//0-未过期 1- 过期
+        criteria.andEqualTo("accessToken", userToken);
+        criteria.andEqualTo("expire", 0);//0-未过期 1- 过期
         List<AccessToken> accessToken = accessTokenMapper.selectByExample(example);
         Assert.notEmpty(accessToken);
         return userInfoMapper.selectByPrimaryKey(accessToken.get(0).getUserId());

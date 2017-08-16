@@ -32,7 +32,7 @@ public class UserInfo {
     @Column(name = "phone_number")
     @NotNull(message = "手机号不能为空")
     @ApiModelProperty(value = "手机号码", required = true)
-    @Size(min=11,max = 11,message = "手机号码必须11位")
+    @Size(min = 11, max = 11, message = "手机号码必须11位")
     private String phoneNumber;
 
 
