@@ -39,7 +39,7 @@ public class RedisTest {
         //数据插入测试：
         opsForValue.set(key, value);
         String valueFromRedis = opsForValue.get(key);
-        logger.info("redis value after set: {}", valueFromRedis);
+        logger.info("redis value after set: {}dd d ", valueFromRedis);
         assertThat(valueFromRedis, is(value));
 
         //数据删除测试：
