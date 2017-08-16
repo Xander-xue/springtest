@@ -27,7 +27,7 @@ public class WebAppConfigurer extends WebMvcConfigurerAdapter {
     public void addInterceptors(InterceptorRegistry registry) {
         registry.addInterceptor(allRequestInterceptor).addPathPatterns("/**");
         registry.addInterceptor(requestInterceptor)
-                .addPathPatterns("/bill/**")
+                .addPathPatterns("/**")
 
                 .excludePathPatterns("/usr/login_quick")
         ;

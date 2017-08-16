@@ -1,8 +1,13 @@
 package com.xdy.service.impl;
 
+import com.xdy.exception.CustomerException;
+import com.xdy.mapper.AccessTokenMapper;
 import com.xdy.mapper.UserInfoMapper;
+import com.xdy.model.AccessToken;
 import com.xdy.model.UserInfo;
 import com.xdy.service.UserInfoService;
+import com.xiaoleilu.hutool.lang.Assert;
+import com.xiaoleilu.hutool.util.CollectionUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Isolation;
@@ -24,7 +29,45 @@ public class UserInfoServiceImpl implements UserInfoService {
 
     @Autowired
     private UserInfoMapper userInfoMapper;
+    @Autowired
+    private AccessTokenMapper accessTokenMapper;
 
+
+    @Override
+    public UserInfo getLoginUser(String userToken) {
+        //如果用户没登录
+        if (!isUserLogin(userToken)) {
+            throw new CustomerException(401, "请登录");
+        }
+        return  this.getUserByToken(userToken,0);
+    }
+
+    /**
+     *  根据用户token查询是否存在token未过期的记录
+     * @param userToken
+     * @return
+     */
+    private boolean isUserLogin(String userToken) {
+        Example example = new Example(AccessToken.class);
+        Example.Criteria criteria = example.createCriteria();
+        criteria.andEqualTo("accessToken",userToken);
+        criteria.andEqualTo("expire",0);//0-未过期 1- 过期
+        List<AccessToken> accessToken = accessTokenMapper.selectByExample(example);
+        if (CollectionUtil.isNotEmpty(accessToken)){
+            return true;
+        }
+        return false;
+    }
+
+    private UserInfo getUserByToken(String userToken, int expire) {
+        Example example = new Example(AccessToken.class);
+        Example.Criteria criteria = example.createCriteria();
+        criteria.andEqualTo("accessToken",userToken);
+        criteria.andEqualTo("expire",0);//0-未过期 1- 过期
+        List<AccessToken> accessToken = accessTokenMapper.selectByExample(example);
+        Assert.notEmpty(accessToken);
+        return userInfoMapper.selectByPrimaryKey(accessToken.get(0).getUserId());
+    }
 
     @Override
     public void save(UserInfo userInfo) {
@@ -59,6 +102,7 @@ public class UserInfoServiceImpl implements UserInfoService {
         u.setId(11);
         u.setUserName("xuedaiyao");
         u.setPassword("jenny1013");
+        u.setPhoneNumber("18916292333");
         userInfoMapper.insert(u);
         //制造异常
         //如果类上面没有@Transactional,方法上也没有，哪怕throw new RuntimeException,数据库也会提交

@@ -2,27 +2,35 @@ package com.xdy.model;
 
 import io.swagger.annotations.ApiModelProperty;
 
+import javax.persistence.Column;
+import javax.persistence.Table;
+
 /**
  * Copyright (C), 2011-2017 温州贷
  * FileName: AccessToken.java
  * Description:
  * History:
  */
+@Table(name = "user_token")
 public class AccessToken {
+
     @ApiModelProperty(value = "token,登录之后的接口访问都需要提交该参数")
+    @Column(name = "token")
     private String accessToken;
-    private String tokenType;
-    private Long expires;
+
+    @Column(name = "expire")
+    @ApiModelProperty(value = "是否过期 0-未过期 1-过期")
+    private Boolean expire;
+
     @ApiModelProperty(value = "userId")
     private Integer userId;
 
     public AccessToken() {
     }
 
-    public AccessToken(String accessToken, String tokenType, Long expires) {
+    public AccessToken(String accessToken,  Boolean expire) {
         this.accessToken = accessToken;
-        this.tokenType = tokenType;
-        this.expires = expires;
+        this.expire = expire;
     }
 
     public String getAccessToken() {
@@ -33,20 +41,12 @@ public class AccessToken {
         this.accessToken = accessToken;
     }
 
-    public String getTokenType() {
-        return tokenType;
+    public Boolean getExpire() {
+        return expire;
     }
 
-    public void setTokenType(String tokenType) {
-        this.tokenType = tokenType;
-    }
-
-    public Long getExpires() {
-        return expires;
-    }
-
-    public void setExpires(Long expires) {
-        this.expires = expires;
+    public void setExpire(Boolean expire) {
+        this.expire = expire;
     }
 
     public Integer getUserId() {

@@ -1,5 +1,6 @@
 package com.xdy.Inteceptor;
 
+import com.xdy.service.UserInfoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
@@ -19,11 +20,13 @@ import javax.servlet.http.HttpServletResponse;
 @Component
 public class RequestInterceptor extends HandlerInterceptorAdapter {
 
+    @Autowired
+    private UserInfoService userInfoService;
 
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
         String currentUser = request.getHeader("Authorization");
-//        request.setAttribute("usrId", redisService.getLoginUser(currentUser).getId());
+        request.setAttribute("usrId", userInfoService.getLoginUser(currentUser).getId());
         return true;
     }
 }

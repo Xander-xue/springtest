@@ -9,8 +9,12 @@ import org.springframework.web.bind.annotation.RestControllerAdvice;
 import javax.servlet.http.HttpServletResponse;
 
 /**
- * 全局异常拦截器
+ * User: xuedaiyao
+ * Date: 2017/8/11
+ * Time: 15:17
+ * Description: 全局异常拦截器
  */
+
 @RestControllerAdvice
 public class ExceptionInterceptor {
     private static final Logger logger = LoggerFactory.getLogger(ExceptionInterceptor.class);

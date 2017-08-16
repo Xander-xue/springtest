@@ -1,6 +1,45 @@
+# Created by .ignore support plugin (hsz.mobi)
+### Java template
+# Compiled class file
+*.class
 
+# Log file
+*.log
+
+# BlueJ files
+*.ctxt
+
+# Mobile Tools for Java (J2ME)
+.mtj.tmp/
+
+# Package Files #
+*.jar
+*.war
+*.ear
+*.zip
+*.tar.gz
+*.rar
+
+# virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
+hs_err_pid*
+### Example user template template
+### Example user template
+
+# IntelliJ project files
 .idea
 *.iml
+out
+gen
 .gitignore
-target
-
+.idea/deployment.xml
+.idea/libraries/Maven__com_xiaoleilu_hutool_all_3_0_9.xml
+.idea/libraries/Maven__io_jsonwebtoken_jjwt_0_7_0.xml
+.idea/libraries/Maven__org_apache_commons_commons_lang3_3_5.xml
+.idea/libraries/Maven__org_springframework_boot_spring_boot_starter_test_1_5_6_RELEASE.xml
+.idea/libraries/Maven__org_springframework_data_spring_data_commons_1_13_6_RELEASE.xml
+.idea/libraries/Maven__org_springframework_data_spring_data_keyvalue_1_2_6_RELEASE.xml
+.idea/libraries/Maven__org_springframework_data_spring_data_redis_1_8_3_RELEASE.xml
+.idea/libraries/Maven__org_springframework_spring_context_support_4_3_10_RELEASE.xml
+.idea/libraries/Maven__org_springframework_spring_oxm_4_3_10_RELEASE.xml
+.idea/workspace.xml
+target/

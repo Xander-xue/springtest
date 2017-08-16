@@ -1,8 +1,12 @@
 package com.xdy.exception;
 
 /**
- * Created by kun on 2017/5/25.
+ * User: xuedaiyao
+ * Date: 2017/8/11
+ * Time: 15:17
+ * Description: 自定义运行异常
  */
+
 public class CustomerException extends RuntimeException {
     private static final long serialVersionUID = -1835206418558868797L;
     private String errorMsg;

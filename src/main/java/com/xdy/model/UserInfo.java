@@ -3,6 +3,8 @@ package com.xdy.model;
 import io.swagger.annotations.ApiModelProperty;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
 /**
  * User: xuedaiyao
@@ -18,15 +20,19 @@ public class UserInfo {
     private Integer id;
 
     @Column(name = "user_name")
+    @NotNull(message = "用户名不能为空")
     @ApiModelProperty(value = "用户名", required = true)
     private String userName;
 
     @Column(name = "password")
+    @NotNull(message = "密码不能为空")
     @ApiModelProperty(value = "密码", required = true)
     private String password;
 
     @Column(name = "phone_number")
+    @NotNull(message = "手机号不能为空")
     @ApiModelProperty(value = "手机号码", required = true)
+    @Size(min=11,max = 11,message = "手机号码必须11位")
     private String phoneNumber;
 
 

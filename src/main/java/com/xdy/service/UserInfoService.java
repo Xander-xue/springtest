@@ -22,4 +22,6 @@ public interface UserInfoService {
     void testTransational();
 
     List<UserInfo> list();
+
+    UserInfo getLoginUser(String currentUser);
 }
